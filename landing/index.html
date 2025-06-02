@@ -6,40 +6,8 @@
     <title>MinhaVaga. - Sua Porta de Entrada para o Primeiro Emprego</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F8F7F4; color: #333333; }
-        .hero-bg { background-color: #E8E8E3; }
-        .accent-color { color: #4A90E2; }
-        .accent-bg { background-color: #4A90E2; }
-        .accent-bg-hover:hover { background-color: #357ABD; }
-        .secondary-accent-color { color: #50C878; }
-        .section-title { font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem; text-align: center; }
-        .section-subtitle { font-size: 1.125rem; color: #555555; margin-bottom: 2.5rem; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;}
-        .card { background-color: #FFFFFF; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .nav-link { padding: 0.5rem 1rem; border-radius: 0.375rem; transition: background-color 0.3s ease; }
-        .nav-link:hover { background-color: #DBDB D4; }
-        .tab-button { padding: 0.75rem 1.5rem; border-radius: 0.375rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s, color 0.3s; border: 1px solid transparent; }
-        .tab-button.active { background-color: #4A90E2; color: white; }
-        .tab-button:not(.active) { background-color: #E8E8E3; color: #333333; }
-        .tab-button:not(.active):hover { background-color: #D1D1C6; }
-        .step-item { cursor: pointer; }
-        .step-details { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
-        .step-details.open { max-height: 200px; } /* Adjust as needed */
-        .testimonial-card { min-width: 80%; }
-        @media (min-width: 768px) { .testimonial-card { min-width: 45%;} }
-        @media (min-width: 1024px) { .testimonial-card { min-width: 30%;} }
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
-        @media (min-width: 768px) { .chart-container { height: 350px; } }
-
-        /* Custom scrollbar for testimonial carousel */
-        .testimonial-carousel::-webkit-scrollbar { height: 8px; }
-        .testimonial-carousel::-webkit-scrollbar-track { background: #E8E8E3; border-radius: 10px; }
-        .testimonial-carousel::-webkit-scrollbar-thumb { background: #4A90E2; border-radius: 10px; }
-        .testimonial-carousel::-webkit-scrollbar-thumb:hover { background: #357ABD; }
-
-        .icon-placeholder { width: 40px; height: 40px; background-color: #4A90E2; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 1rem; flex-shrink: 0; }
-    </style>
+    <link rel="icon" type="image" href="./icon.png">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body class="antialiased">
 
@@ -59,14 +27,12 @@
             </button>
         </nav>
         <div id="mobile-menu" class="md:hidden hidden px-6 pb-3 space-y-1">
-            <a href="#desafio" class="block nav-link">O Desafio</a>
-            <a href="#solucao" class="block nav-link">Nossa Solução</a>
             <a href="#como-funciona" class="block nav-link">Como Funciona</a>
             <a href="#recursos" class="block nav-link">Recursos</a>
-            <a href="#diferencial" class="block nav-link">Diferencial</a>
-            <a href="#casos-sucesso" class="block nav-link">Sucessos</a>
+            <a href="#diferencial" class="nav-link">Diferencial</a>
+            <a href="#diferencial" class="block nav-link">Sucessos</a>
             <a href="#futuro" class="block nav-link">Futuro</a>
-            <a href="#junte-se" class="block accent-bg text-white px-4 py-2 rounded-md accent-bg-hover text-center">Junte-se</a>
+            <a href="#junte-se" class="block accent-bg text-white px-4 py-2 rounded-md accent-bg-hover text-center">Login</a>
         </div>
     </header>
 
@@ -139,12 +105,12 @@
                 <div class="card text-center">
                     <div class="text-4xl mb-4 secondary-accent-color">🌟</div>
                     <h3 class="text-xl font-semibold mb-2">Vagas Exclusivas</h3>
-                    <p>Acesso antecipado a vagas de empresas parceiras (para assinantes).</p>
+                    <p>Acesso antecipado a vagas de empresas parceiras.</p>
                 </div>
                 <div class="card text-center">
                     <div class="text-4xl mb-4 secondary-accent-color">📊</div>
                     <h3 class="text-xl font-semibold mb-2">Otimização de Perfil</h3>
-                    <p>Análise e feedback especializado em LinkedIn e currículo (para assinantes).</p>
+                    <p>Análise e feedback especializado em LinkedIn e currículo.</p>
                 </div>
                 <div class="card text-center">
                     <div class="text-4xl mb-4 secondary-accent-color">🚀</div>
@@ -183,7 +149,7 @@
                 <div class="card step-item" data-step="3">
                     <div class="flex items-center">
                         <div class="accent-bg text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold mr-4">3</div>
-                        <h3 class="text-xl font-semibold">Acesso Antecipado (Assinantes)</h3>
+                        <h3 class="text-xl font-semibold">Acesso Antecipado</h3>
                          <span class="ml-auto text-2xl transform transition-transform duration-300 step-arrow">▼</span>
                     </div>
                      <div class="pl-14 mt-2 step-details" id="step-details-3">
@@ -193,7 +159,7 @@
                 <div class="card step-item" data-step="4">
                      <div class="flex items-center">
                         <div class="accent-bg text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold mr-4">4</div>
-                        <h3 class="text-xl font-semibold">Análise de Perfil (Assinantes)</h3>
+                        <h3 class="text-xl font-semibold">Análise de Perfil</h3>
                          <span class="ml-auto text-2xl transform transition-transform duration-300 step-arrow">▼</span>
                     </div>
                     <div class="pl-14 mt-2 step-details" id="step-details-4">
@@ -216,12 +182,8 @@
 
     <section id="recursos" class="py-16 bg-gray-100">
         <div class="container mx-auto px-6">
-            <h2 class="section-title">Recursos e Benefícios Chave</h2>
-            <p class="section-subtitle">Descubra tudo o que o MinhaVaga oferece para impulsionar sua jornada profissional, seja você um usuário gratuito ou assinante premium.</p>
-            <div class="mb-8 flex justify-center space-x-2 md:space-x-4">
-                <button class="tab-button active" data-tab="todos">Para Todos</button>
-                <button class="tab-button" data-tab="premium">Para Assinantes Premium</button>
-            </div>
+            <h2 class="section-title">Recursos e Benefícios</h2>
+            <p class="section-subtitle">Descubra tudo o que o MinhaVaga oferece para impulsionar sua jornada profissional.</p>
 
             <div id="tab-content-todos" class="tab-content">
                 <div class="grid md:grid-cols-3 gap-6">
@@ -235,24 +197,31 @@
                     </div>
                     <div class="card">
                         <h3 class="text-xl font-semibold mb-2 accent-color">Alertas de Vagas</h3>
-                        <p>Receba notificações por e-mail sobre novas oportunidades que correspondem ao seu perfil.</p>
+                        <p>Receba notificações sobre novas oportunidades que correspondem ao seu perfil.</p>
                     </div>
-                </div>
-            </div>
-
-            <div id="tab-content-premium" class="tab-content hidden">
-                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="card">
-                        <h3 class="text-xl font-semibold mb-2 secondary-accent-color">Vagas Exclusivas</h3>
+                        <h3 class="text-xl font-semibold mb-2 accent-color">Comunidade Tech</h3>
+                        <p>Participe da nossa comunidade e faça networking com outros profissionais da área.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-semibold mb-2 accent-color">Vagas Exclusivas</h3>
                         <p>Acesso a um pool de vagas de empresas parceiras não divulgadas publicamente.</p>
                     </div>
                     <div class="card">
-                        <h3 class="text-xl font-semibold mb-2 secondary-accent-color">Análise de LinkedIn e Currículo</h3>
+                        <h3 class="text-xl font-semibold mb-2 accent-color">Análise de LinkedIn e Currículo</h3>
                         <p>Feedback detalhado e personalizado dos nossos especialistas para maximizar suas chances.</p>
                     </div>
                     <div class="card">
-                        <h3 class="text-xl font-semibold mb-2 secondary-accent-color">Suporte Prioritário</h3>
+                        <h3 class="text-xl font-semibold mb-2 accent-color">Lives com Recrutadores</h3>
+                        <p>Sessões ao vivo exclusivas com recrutadores e referências do mercado, insights diretos sobre tendências e dicas de carreira.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-semibold mb-2 accent-color">Suporte Prioritário</h3>
                         <p>Atendimento dedicado e ágil para tirar suas dúvidas e ajudar no que precisar.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-semibold mb-2 accent-color">Networking com Recrutadores</h3>
+                        <p>Acesso exclusivo a eventos e conexões diretas com recrutadores de empresas parceiras.</p>
                     </div>
                 </div>
             </div>
@@ -307,7 +276,7 @@
     <section id="casos-sucesso" class="py-16 bg-gray-100">
         <div class="container mx-auto px-6">
             <h2 class="section-title">Casos de Sucesso</h2>
-            <p class="section-subtitle">Histórias reais (e outras inspiradoras) de como o MinhaVaga tem ajudado talentos como você a alcançar seus objetivos.</p>
+            <p class="section-subtitle">Histórias reais e inspiradoras de como o <strong>MinhaVaga</strong> tem ajudado talentos como você a alcançar seus objetivos.</p>
             <div class="relative">
                 <div id="testimonialCarousel" class="testimonial-carousel flex overflow-x-auto space-x-6 pb-4">
                     <div class="testimonial-card card flex-shrink-0">
@@ -351,23 +320,17 @@
                     <p>Aprimorar a correspondência de vagas e a análise de perfil com tecnologia de ponta.</p>
                 </div>
             </div>
-            <div class="chart-container bg-white p-4 rounded-lg shadow">
-                 <h3 class="text-lg font-semibold mb-2 text-center">Projeção: Crescimento de Empresas Parceiras</h3>
-                <canvas id="parceriasChart"></canvas>
-            </div>
-             <p class="text-sm text-gray-600 mt-2 text-center">Gráfico ilustrativo da nossa expansão de parcerias.</p>
         </div>
     </section>
 
-    <section id="junte-se" class="py-20 bg-accent-color text-white">
+    <section id="junte-se" class="py-20 bg-accent-color">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Junte-se à Nossa Comunidade!</h2>
             <p class="text-lg md:text-xl mb-8">MinhaVaga: Seu Caminho para o Sucesso em Tecnologia Começa Aqui.</p>
             <div class="space-y-4 md:space-y-0 md:space-x-4">
-                <a href="#" class="bg-white text-accent-color font-semibold px-8 py-3 rounded-lg text-lg hover:bg-gray-200 transition duration-300 inline-block">Visite Nosso Site (Exemplo.com)</a>
-                <a href="#" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-white hover:text-accent-color transition duration-300 inline-block">Assine o Plano Premium</a>
+                <a href="#junte-se" class="accent-bg text-white font-semibold px-8 py-3 rounded-lg text-lg hover:bg-blue-700 transition duration-300">Encontre sua Vaga Agora!</a>
             </div>
-            <p class="mt-8">Siga-nos nas redes sociais: @TechJobsJr (Exemplo)</p>
+            <p class="mt-8">Siga-nos nas redes sociais: @MinhaVaga</p>
         </div>
     </section>
 
@@ -376,160 +339,7 @@
         <p>Feito com 💙 para ajudar juniores a decolar!</p>
     </footer>
 
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    <script src="./script.js"></script>
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-                if (mobileMenu.classList.contains('hidden') === false) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // "How It Works" steps toggle
-        const stepItems = document.querySelectorAll('.step-item');
-        stepItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const stepNumber = item.dataset.step;
-                const detailsDiv = document.getElementById(`step-details-${stepNumber}`);
-                const arrow = item.querySelector('.step-arrow');
-
-                // Close other open steps
-                document.querySelectorAll('.step-details.open').forEach(openDetail => {
-                    if (openDetail !== detailsDiv) {
-                        openDetail.classList.remove('open');
-                        const otherArrow = openDetail.closest('.step-item').querySelector('.step-arrow');
-                        if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
-                    }
-                });
-                
-                detailsDiv.classList.toggle('open');
-                if (detailsDiv.classList.contains('open')) {
-                    arrow.style.transform = 'rotate(180deg)';
-                } else {
-                    arrow.style.transform = 'rotate(0deg)';
-                }
-            });
-        });
-
-        // Tabs for "Recursos"
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const targetTab = button.dataset.tab;
-                tabContents.forEach(content => {
-                    if (content.id === `tab-content-${targetTab}`) {
-                        content.classList.remove('hidden');
-                    } else {
-                        content.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // Testimonial Carousel
-        const carousel = document.getElementById('testimonialCarousel');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        if (carousel && prevBtn && nextBtn) {
-            const scrollAmount = () => {
-                // Scroll by the width of one card. If cards have margin, this needs adjustment.
-                // For simplicity, let's assume a card takes roughly 1/3 of the viewport on larger screens.
-                if (window.innerWidth < 768) return carousel.clientWidth * 0.85; // For smaller screens, scroll almost full width
-                return carousel.clientWidth / 2.5; // Adjust this factor as needed
-            };
-            
-            nextBtn.addEventListener('click', () => {
-                carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-            });
-
-            prevBtn.addEventListener('click', () => {
-                carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-            });
-
-            // Show/hide buttons based on scroll position (optional, for better UX)
-            const updateCarouselButtons = () => {
-                if (carousel.scrollLeft <= 0) {
-                    prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                } else {
-                    prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-
-                if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) { // -10 for tolerance
-                    nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                } else {
-                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-            };
-            if (window.innerWidth >= 768) { // Only show desktop buttons if screen is md or larger
-                 prevBtn.classList.remove('hidden');
-                 nextBtn.classList.remove('hidden');
-            }
-
-            carousel.addEventListener('scroll', updateCarouselButtons);
-            window.addEventListener('resize', updateCarouselButtons); // Re-check on resize
-            updateCarouselButtons(); // Initial check
-        }
-
-        // Chart 2: Crescimento de Empresas Parceiras
-        const parceriasCtx = document.getElementById('parceriasChart')?.getContext('2d');
-        if (parceriasCtx) {
-            new Chart(parceriasCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Trimestre 1', 'Trimestre 2', 'Trimestre 3', 'Trimestre 4 (Proj.)'],
-                    datasets: [{
-                        label: 'Empresas Parceiras',
-                        data: [10, 25, 45, 70], // Dados de exemplo
-                        fill: false,
-                        borderColor: 'rgba(80, 200, 120, 1)', // secondary-accent-color
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            suggestedMax: 80
-                        }
-                    },
-                    plugins: {
-                         legend: {
-                            position: 'top',
-                        },
-                        tooltip: {
-                             mode: 'index',
-                             intersect: false,
-                        }
-                    }
-                }
-            });
-        }
-
-    </script>
 </body>
 </html>
