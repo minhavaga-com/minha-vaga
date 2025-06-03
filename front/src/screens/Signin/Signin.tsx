@@ -7,13 +7,13 @@ interface FormData {
   password: string;
 }
 
-interface AuthContextType {
-  signIn: (email: string, password: string) => Promise<void>;
-}
+// interface AuthContextType {
+//   signIn: (email: string, password: string) => Promise<void>;
+// }
 
-interface AppError extends Error {
-  message: string;
-}
+// interface AppError extends Error {
+//   message: string;
+// }
 
 interface SignInProps {}
 
@@ -34,7 +34,7 @@ export const SignIn: React.FC<SignInProps> = () => {
   const handleSignIn = async ({ email, password }: FormData): Promise<void> => {
     try {
       setIsLoading(true);
-      // await signIn(email, password);
+      await signIn(email, password);
       
     } catch (error) {
       const isAppError = error instanceof Error;
