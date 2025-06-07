@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Section,
     Container,
@@ -90,7 +91,7 @@ export const LandingPageScreen: React.FC = () => {
             <IconWrapper>
               <Icon role="img" aria-label="lupa de busca">🔍</Icon>
             </IconWrapper>
-            <CtaButton href="https://minha-vaga-hivb.vercel.app/">Encontre sua Vaga Agora!</CtaButton>
+            <CtaButton as={Link} to="/planos">Encontre sua Vaga Agora!</CtaButton>
           </Container>
         </HeroSection>
         
@@ -213,13 +214,13 @@ export const LandingPageScreen: React.FC = () => {
           <Container>
             <JoinUsTitle>Junte-se à Nossa Comunidade!</JoinUsTitle>
             <JoinUsSubtitle>Seu Caminho para o Sucesso em Tecnologia Começa Aqui.</JoinUsSubtitle>
-            <JoinUsCtaButton href="https://minha-vaga-hivb.vercel.app/">Encontre sua Vaga Agora!</JoinUsCtaButton>
+            <JoinUsCtaButton as={Link} to="/planos">Encontre sua Vaga Agora!</JoinUsCtaButton>
             <JoinUsSocials>Siga-nos nas redes sociais: @MinhaVaga</JoinUsSocials>
           </Container>
         </JoinUsCtaSection>
 
         <FooterContainer>
-          <p style={{fontFamily: 'Readex Pro'}}>&copy; {new Date().getFullYear()} MinhaVaga. Todos os direitos reservados.</p>
+          <p style={{fontFamily: 'Readex Pro'}}>&copy; {new Date().getFullYear()} MinhaVaga.com Todos os direitos reservados.</p>
           <p style={{fontFamily: 'Readex Pro'}}>Feito com 💙 para ajudar juniores a decolar!</p>
         </FooterContainer>
     </>

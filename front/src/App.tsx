@@ -1,12 +1,14 @@
-import { LandingPageScreen } from './screens/landing/landing';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from './routes';
+import { GlobalStyle } from './GlobalStyles';
 
 function App() {
-
   return (
-    <>
-      <LandingPageScreen />
-    </>
-  )
+    <BrowserRouter>
+      <GlobalStyle />
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
