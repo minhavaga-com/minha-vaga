@@ -18,6 +18,7 @@ export const Nav = styled.nav`
 `;
 
 export const Logo = styled.a`
+  font-family: 'Readex Pro', sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
   color: #4A90E2;
@@ -34,6 +35,7 @@ export const NavLinks = styled.div`
 `;
 
 export const NavLink = styled.a`
+  font-family: 'Readex Pro', sans-serif;
   color: #4F4F4F;
   padding: 0.5rem;
   border-radius: 6px;

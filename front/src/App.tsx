@@ -1,10 +1,10 @@
-import { PaymentPlans } from './screens/PaymentPlans/PaymentPlans';
+import { LandingPageScreen } from './screens/landing/landing';
 
 function App() {
 
   return (
     <>
-      <PaymentPlans />
+      <LandingPageScreen />
     </>
   )
 }
