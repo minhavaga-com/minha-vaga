@@ -1,0 +1,86 @@
+import styled from 'styled-components';
+
+export const HeaderContainer = styled.header`
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+`;
+
+export const Logo = styled.a`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4A90E2;
+  text-decoration: none;
+`;
+
+export const NavLinks = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+`;
+
+export const NavLink = styled.a`
+  color: #4F4F4F;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #DBDBD4;
+  }
+`;
+
+export const LoginButton = styled(NavLink)`
+  background-color: #4A90E2;
+  color: #FFFFFF;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: #357ABD;
+  }
+`;
+
+export const MobileMenuButton = styled.button`
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MobileMenu = styled.div<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  padding: 0 1.5rem 0.75rem;
+  margin-bottom: 0.25rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  ${NavLink} {
+    display: block;
+  }
+
+  ${LoginButton} {
+    display: block;
+    text-align: center;
+  }
+`;
