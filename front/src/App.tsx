@@ -1,11 +1,10 @@
-import './App.css';
-import { Login } from './screens/Login/Login';
+import { PaymentPlans } from './screens/PaymentPlans/PaymentPlans';
 
 function App() {
 
   return (
     <>
-      <Login />
+      <PaymentPlans />
     </>
   )
 }
