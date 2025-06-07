@@ -31,6 +31,10 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const displayPrice = plan.id === 'basic' ? 0 : plan.monthlyPrice;
   const frequencyText = plan.id === 'basic' ? '' : '/mês';
 
+  const handleSubscribe = () => {
+    window.open('https://em-breve-one.vercel.app/', '_blank');
+  };
+
   return (
     <Card isPopular={plan.isPopular}>
       <div>
@@ -54,7 +58,7 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
           ))}
         </FeatureList>
       </div>
-      <SubscribeButton isPopular={plan.isPopular}>
+      <SubscribeButton isPopular={plan.isPopular} onClick={handleSubscribe}>
         Assinar {plan.name}
       </SubscribeButton>
     </Card>
@@ -90,7 +94,7 @@ export const PaymentPlans: React.FC = () => {
           <ContactSubtitle>
             Entre em contato conosco para saber mais sobre os planos corporativos ou tirar dúvidas.
           </ContactSubtitle>
-          <ContactButton href="mailto:contato@minhavaga.com">Fale Conosco</ContactButton>
+          <ContactButton href="https://em-breve-one.vercel.app/">Fale Conosco</ContactButton>
         </ContactContainer>
       </ContactSection>
 

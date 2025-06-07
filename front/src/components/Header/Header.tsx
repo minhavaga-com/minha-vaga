@@ -22,9 +22,9 @@ export const Header: React.FC = () => {
       <Nav>
         <Logo href="#">MinhaVaga.com</Logo>
         <NavLinks>
-          <NavLink href="#plans">Planos</NavLink>
-          <NavLink href="#contact">Contato</NavLink>
-          <LoginButton href="#login">Login</LoginButton>
+          <NavLink href="https://em-breve-one.vercel.app/">Planos</NavLink>
+          <NavLink href="https://em-breve-one.vercel.app/">Contato</NavLink>
+          <LoginButton href="https://em-breve-one.vercel.app/">Login</LoginButton>
         </NavLinks>
         <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <svg 
@@ -45,9 +45,9 @@ export const Header: React.FC = () => {
         </MobileMenuButton>
       </Nav>
       <MobileMenu isOpen={isMobileMenuOpen}>
-        <NavLink href="#plans" onClick={handleNavLinkClick}>Planos</NavLink>
-        <NavLink href="#contact" onClick={handleNavLinkClick}>Contato</NavLink>
-        <LoginButton href="#login" onClick={handleNavLinkClick}>Login</LoginButton>
+        <NavLink href="https://em-breve-one.vercel.app/" onClick={handleNavLinkClick}>Planos</NavLink>
+        <NavLink href="https://em-breve-one.vercel.app/" onClick={handleNavLinkClick}>Contato</NavLink>
+        <LoginButton href="https://em-breve-one.vercel.app/" onClick={handleNavLinkClick}>Login</LoginButton>
       </MobileMenu>
     </HeaderContainer>
   );
