@@ -28,6 +28,7 @@ import {
   ContactButton,
   FooterContainer
 } from './styles';
+import { Link } from 'react-router-dom';
 
 const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const displayPrice = plan.id === 'basic' ? 0 : plan.monthlyPrice;
@@ -104,7 +105,7 @@ export const PaymentPlans: React.FC = () => {
           <ContactSubtitle>
             Entre em contato conosco para saber mais sobre os planos corporativos ou tirar dúvidas.
           </ContactSubtitle>
-          <ContactButton href="/contato">Fale Conosco</ContactButton>
+          <ContactButton as={Link} to="/contato">Fale Conosco</ContactButton>
         </ContactContainer>
       </ContactSection>
 
