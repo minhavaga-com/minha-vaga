@@ -104,7 +104,7 @@ export const PaymentPlans: React.FC = () => {
           <ContactSubtitle>
             Entre em contato conosco para saber mais sobre os planos corporativos ou tirar dúvidas.
           </ContactSubtitle>
-          <ContactButton href="https://em-breve-one.vercel.app/">Fale Conosco</ContactButton>
+          <ContactButton href="/contato">Fale Conosco</ContactButton>
         </ContactContainer>
       </ContactSection>
 
