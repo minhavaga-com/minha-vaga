@@ -46,12 +46,14 @@ export const PricingSection = styled.section`
 export const PlansGrid = styled.div`
   display: grid;
   gap: 2rem;
+  align-items: start;
+  justify-items: center;
   
   @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(280px, 400px));
   }
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(280px, 350px));
   }
 `;
 
@@ -62,7 +64,8 @@ export const Card = styled.div<{ isPopular?: boolean }>`
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  width: 100%;
+  max-width: 350px;
   border: 2px solid ${({ isPopular }) => (isPopular ? '#4A90E2' : 'transparent')};
   transform: ${({ isPopular }) => (isPopular ? 'scale(1.05)' : 'scale(1)')};
   transition: transform 0.3s ease;
@@ -116,7 +119,7 @@ export const FeatureList = styled.ul`
 export const FeatureItem = styled.li`
   display: flex;
   align-items: center;
-  
+  margin: 1rem 0;
   span {
     color: #50C878;
     margin-right: 0.5rem;
@@ -126,6 +129,7 @@ export const FeatureItem = styled.li`
 export const SubscribeButton = styled.button<{ isPopular?: boolean }>`
   width: 100%;
   padding: 0.75rem;
+  margin-top: 1.5rem;
   border-radius: 8px;
   font-weight: 600;
   font-size: 1.125rem;
@@ -141,6 +145,21 @@ export const SubscribeButton = styled.button<{ isPopular?: boolean }>`
   }
 `;
 
+export const SavingsText = styled.p`
+  text-align: center;
+  color: #50C878;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+`;
+
+export const InstallmentText = styled.p`
+  font-size: 1rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+`;
+
 export const ContactSection = styled(HeroSection)`
   background-color: #E5E7EB;
 `;
@@ -154,6 +173,7 @@ export const ContactButton = styled.a`
   color: #FFFFFF;
   font-weight: 600;
   padding: 0.75rem 2rem;
+  margin-top: 1.5rem;
   border-radius: 8px;
   font-size: 1.125rem;
   text-decoration: none;

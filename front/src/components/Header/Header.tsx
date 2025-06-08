@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   HeaderContainer,
   Nav,
@@ -13,6 +13,7 @@ import {
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleNavLinkClick = () => {
     setIsMobileMenuOpen(false);
@@ -23,7 +24,13 @@ export const Header: React.FC = () => {
       <Nav>
         <Logo as={Link} to="/">MinhaVaga.com</Logo>
         <NavLinks>
-          <NavLink as={Link} to="/planos">Planos</NavLink>
+          <NavLink 
+            as={Link} 
+            to="/planos" 
+            $isActive={location.pathname === '/planos'}
+          >
+            Planos
+          </NavLink>
           <NavLink as={Link} to="#contact">Contato</NavLink>
           <LoginButton href="https://em-breve-one.vercel.app/" target="_blank">Login</LoginButton>
         </NavLinks>
@@ -46,7 +53,14 @@ export const Header: React.FC = () => {
         </MobileMenuButton>
       </Nav>
       <MobileMenu isOpen={isMobileMenuOpen}>
-        <NavLink as={Link} to="/planos" onClick={handleNavLinkClick}>Planos</NavLink>
+        <NavLink 
+          as={Link} 
+          to="/planos" 
+          onClick={handleNavLinkClick}
+          $isActive={location.pathname === '/planos'}
+        >
+          Planos
+        </NavLink>
         <NavLink as={Link} to="#contact" onClick={handleNavLinkClick}>Contato</NavLink>
         <LoginButton href="https://em-breve-one.vercel.app/" target="_blank" onClick={handleNavLinkClick}>Login</LoginButton>
       </MobileMenu>

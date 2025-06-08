@@ -34,7 +34,7 @@ export const NavLinks = styled.div`
   }
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled.a<{ $isActive?: boolean }>`
   font-family: 'Readex Pro', sans-serif;
   color: #4F4F4F;
   padding: 0.5rem;
@@ -42,10 +42,26 @@ export const NavLink = styled.a`
   transition: background-color 0.3s;
   text-decoration: none;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     background-color: #DBDBD4;
   }
+
+  ${({ $isActive }) =>
+    $isActive &&
+    `
+    color: #4A90E2;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #4A90E2;
+    }
+  `}
 `;
 
 export const LoginButton = styled(NavLink)`
@@ -55,6 +71,10 @@ export const LoginButton = styled(NavLink)`
 
   &:hover {
     background-color: #357ABD;
+  }
+
+  &::after {
+    display: none !important;
   }
 `;
 
