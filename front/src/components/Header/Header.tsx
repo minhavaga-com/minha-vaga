@@ -38,7 +38,13 @@ export const Header: React.FC = () => {
           >
             Contato
           </NavLink>
-          <LoginButton href="https://em-breve-one.vercel.app/" target="_blank">Login</LoginButton>
+          <LoginButton
+            as={Link}
+            to="/login"
+            $isActive={location.pathname === '/login'}
+            >
+              Login
+            </LoginButton>
         </NavLinks>
         <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <svg 
