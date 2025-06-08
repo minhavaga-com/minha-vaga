@@ -16,9 +16,11 @@ import {
   Price,
   PriceFree,
   PriceFrequency,
+  InstallmentText,
   FeatureList,
   FeatureItem,
   SubscribeButton,
+  SavingsText,
   ContactSection,
   ContactContainer,
   ContactTitle,
@@ -40,6 +42,9 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
       <div>
         <PlanName>{plan.name}</PlanName>
         {plan.isPopular && <PopularBadge>Mais Popular</PopularBadge>}
+        {plan.id === 'annual' && (
+          <InstallmentText>à vista R$ 588.00 ou 12x de</InstallmentText>
+        )}
         <Price>
           {displayPrice === 0 ? (
             <PriceFree>Grátis</PriceFree>
@@ -58,9 +63,14 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
           ))}
         </FeatureList>
       </div>
-      <SubscribeButton isPopular={plan.isPopular} onClick={handleSubscribe}>
-        Assinar {plan.name}
-      </SubscribeButton>
+      <div>
+        <SubscribeButton isPopular={plan.isPopular} onClick={handleSubscribe}>
+          Assinar {plan.name}
+        </SubscribeButton>
+        {plan.id === 'annual' && (
+          <SavingsText>economize 67%</SavingsText>
+        )}
+      </div>
     </Card>
   );
 };

@@ -21,8 +21,12 @@ export const plans: Plan[] = [
       'Todas as funcionalidades do Básico',
       'Vagas exclusivas de empresas parceiras',
       'Análise de LinkedIn e currículo',
+      'Acesso a eventos de networking exclusivos',
+      'Mentoria personalizada',
       'Suporte prioritário',
-      'Workshops e webinars mensais'
+      'Consultoria de carreira individual',
+      'Workshops e webinars mensais',
+      'Acesso a comunidade exclusiva'
     ],
     isPopular: true,
   },
@@ -32,11 +36,13 @@ export const plans: Plan[] = [
     monthlyPrice: 99.90,
     yearlyPrice: 999.00,
     features: [
-      'Todas as funcionalidades do Anual',
-      'Consultoria de carreira individual',
-      'Mentoria personalizada',
+      'Todas as funcionalidades do Básico',
+      'Vagas exclusivas de empresas parceiras',
+      'Análise de LinkedIn e currículo',
       'Acesso a eventos de networking exclusivos',
-      'Suporte 24/7 dedicado'
+      'Workshops e webinars mensais',
+      'Acesso a comunidade exclusiva',
+      'Suporte'
     ],
   },
 ];
