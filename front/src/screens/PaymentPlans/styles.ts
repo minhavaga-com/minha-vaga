@@ -13,6 +13,11 @@ export const HeroSection = styled.section`
 export const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 `;
 
 export const Title = styled.h1`
