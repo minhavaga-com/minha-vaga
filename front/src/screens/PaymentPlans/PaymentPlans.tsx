@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
 
 import type { Plan } from './types';
@@ -31,11 +32,12 @@ import {
 import { Link } from 'react-router-dom';
 
 const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
+  const navigate = useNavigate();
   const displayPrice = plan.id === 'basic' ? 0 : plan.monthlyPrice;
   const frequencyText = plan.id === 'basic' ? '' : '/mês';
 
   const handleSubscribe = () => {
-    window.open('https://em-breve-one.vercel.app/', '_blank');
+    navigate(`/checkout/${plan.id}`);
   };
 
   return (
@@ -51,7 +53,7 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
             <PriceFree>Grátis</PriceFree>
           ) : (
             <>
-              R$ {displayPrice.toFixed(2)}
+              R$ {displayPrice}
               <PriceFrequency>{frequencyText}</PriceFrequency>
             </>
           )}
