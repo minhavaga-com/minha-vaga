@@ -86,7 +86,7 @@ export const LandingPageScreen: React.FC = () => {
 
         <HeroSection id="hero">
           <Container>
-            <Title>MinhaVaga</Title>
+            <Title>MinhaVaga.com</Title>
             <Subtitle>Conectando Talentos Juniores às Melhores Oportunidades em Tecnologia</Subtitle>
             <IconWrapper>
               <Icon role="img" aria-label="lupa de busca">🔍</Icon>

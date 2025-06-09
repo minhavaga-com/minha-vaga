@@ -24,6 +24,7 @@ export const HeroSection = styled(Section)`
 `;
 
 export const Title = styled.h1`
+  color: ${colors.primary};
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
