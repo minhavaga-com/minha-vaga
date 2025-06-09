@@ -87,7 +87,7 @@ export const LoginScreen: FC = () => {
             <DescriptionText>
               Se você ainda não possui uma conta, escolha um plano do MinhaVaga e preencha o cadastro para ter acesso a vagas exclusivas e ferramentas para impulsionar sua carreira.
             </DescriptionText>
-            <ActionButton as={Link} to="/contato">
+            <ActionButton as={Link} to="/planos">
               Escolher Plano
             </ActionButton>
           </Column>
