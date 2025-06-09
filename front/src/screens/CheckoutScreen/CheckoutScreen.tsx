@@ -29,7 +29,7 @@ import { Header } from "../../components/Header/Header";
 
 export const CheckoutScreen: React.FC = () => {
   const { planId } = useParams<{ planId: string }>();
-  const [paymentMethod, setPaymentMethod] = useState('credit_card');
+  const [paymentMethod, setPaymentMethod] = useState('pix');
 
   const plan = plans.find(p => p.id === planId);
 
@@ -38,6 +38,15 @@ export const CheckoutScreen: React.FC = () => {
   }
 
   const isBasicPlan = plan.id === 'basic';
+  
+  const getPixPrice = () => {
+    if (plan.id === 'annual') {
+      const yearlyPrice = parseFloat(plan.yearlyPrice.replace(',', '.'));
+      const discountedPrice = yearlyPrice * 0.95;
+      return discountedPrice.toFixed(2).replace('.', ',');
+    }
+    return plan.yearlyPrice;
+  };
 
   return (
     <>
@@ -89,7 +98,7 @@ export const CheckoutScreen: React.FC = () => {
                         readOnly
                       />
                       <span>Pix (5% Desconto)</span>
-                      <span className="details" style={{color: '#50C878', fontWeight: 'bold'}}>R$ {plan.yearlyPrice}</span>
+                      <span className="details" style={{color: '#50C878', fontWeight: 'bold'}}>R$ {getPixPrice()}</span>
                       <span className="icon"><FaPix /></span>
                     </RadioWrapper>
                     <RadioWrapper 
@@ -171,7 +180,6 @@ export const CheckoutScreen: React.FC = () => {
                       <span className="title">{feature}</span>
                       <FiChevronDown />
                     </div>
-                    {/* Lógica de acordeão pode ser adicionada aqui com useState */}
                   </FeatureItem>
                 ))}
               </SummaryCard>

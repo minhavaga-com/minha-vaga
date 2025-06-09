@@ -15,8 +15,8 @@ export const plans: Plan[] = [
   {
     id: 'annual',
     name: 'Anual',
-    monthlyPrice: '59,00',
-    yearlyPrice: '468,00',
+    monthlyPrice: '49,00',
+    yearlyPrice: '588,00',
     features: [
       'Todas as funcionalidades do Básico',
       'Vagas exclusivas de empresas parceiras',
