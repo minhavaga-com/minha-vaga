@@ -78,7 +78,7 @@ export const LoginScreen: FC = () => {
                 <ForgotPasswordLink href="#">Perdeu sua senha?</ForgotPasswordLink>
               </OptionsRow>
               
-              <ActionButton type="submit">Acessar Conta</ActionButton>
+              <ActionButton as={Link} to="/home" type="submit">Acessar Conta</ActionButton>
             </LoginForm>
           </Column>
 
