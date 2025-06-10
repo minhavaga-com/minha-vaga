@@ -5,6 +5,7 @@ import { PaymentPlans } from '../screens/PaymentPlans/PaymentPlans';
 import { ContactScreen } from '../screens/Contact/Contact';
 import { LoginScreen } from '../screens/Login/Login';
 import { CheckoutScreen } from '../screens/CheckoutScreen/CheckoutScreen';
+import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/contato" element={<ContactScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/checkout/:planId" element={<CheckoutScreen />} />
+      <Route path="/home" element={<HomeScreen />} />
     </Routes>
   );
 };

@@ -41,7 +41,6 @@ export const Header: React.FC = () => {
           <LoginButton
             as={Link}
             to="/login"
-            $isActive={location.pathname === '/login'}
             >
               Login
             </LoginButton>
@@ -69,21 +68,18 @@ export const Header: React.FC = () => {
           as={Link} 
           to="/planos" 
           onClick={handleNavLinkClick}
-          $isActive={location.pathname === '/planos'}
         >
           Planos
         </NavLink>
         <NavLink
             as={Link}
             to="/contato"
-            $isActive={location.pathname === '/contato'}
           >
             Contato
           </NavLink>
           <LoginButton
             as={Link}
             to="/login"
-            $isActive={location.pathname === '/login'}
             >
               Login
             </LoginButton>
