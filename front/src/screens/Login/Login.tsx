@@ -1,4 +1,4 @@
-import { useState, type FC, type FormEvent } from "react";
+import { useState, type FC, type FormEvent, useEffect } from "react";
 import {
   ActionButton,
   CheckboxWrapper,
@@ -15,23 +15,49 @@ import {
   PageWrapper,
   Subheading
 } from "./styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
+import { useAuthForm } from "../../hooks/useAuthForm";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const LoginScreen: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  
+  const { loading, error, handleLogin, handleGoogleLogin } = useAuthForm();
+  const { firebaseConfigured, isAuthenticated, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
 
-  const handleLoginSubmit = (event: FormEvent) => {
+  useEffect(() => {
+    if (!authLoading && isAuthenticated) {
+      navigate('/home', { replace: true });
+    }
+  }, [isAuthenticated, authLoading, navigate]);
+
+  const handleLoginSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log({
-      email,
-      password,
-      rememberMe,
-    });
-    alert('Tentativa de login enviada!');
+    await handleLogin(email, password);
   };
+
+  if (authLoading) {
+    return (
+      <>
+        <Header />
+        <PageWrapper>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '50vh',
+            fontSize: '1.2rem' 
+          }}>
+            Verificando autenticação...
+          </div>
+        </PageWrapper>
+      </>
+    );
+  }
 
   return (
     <>
@@ -42,6 +68,20 @@ export const LoginScreen: FC = () => {
         <ContentGrid>
           <Column>
             <Subheading>Entrar</Subheading>
+            {!firebaseConfigured && (
+              <div style={{ 
+                padding: '1rem', 
+                marginBottom: '1rem',
+                backgroundColor: '#fff3cd', 
+                color: '#856404',
+                border: '1px solid #ffeaa7',
+                borderRadius: '4px',
+                fontSize: '0.9rem'
+              }}>
+                ⚠️ <strong>Firebase não configurado:</strong> Para usar o login, configure as variáveis de ambiente do Firebase. 
+                Consulte o arquivo <code>FIREBASE_AUTH_SETUP.md</code> para instruções.
+              </div>
+            )}
             <LoginForm onSubmit={handleLoginSubmit}>
               <InputGroup>
                 <Label htmlFor="email">E-mail</Label>
@@ -78,8 +118,41 @@ export const LoginScreen: FC = () => {
                 <ForgotPasswordLink href="#">Perdeu sua senha?</ForgotPasswordLink>
               </OptionsRow>
               
-              <ActionButton as={Link} to="/home" type="submit">Acessar Conta</ActionButton>
+              {error && (
+                <div style={{ color: 'red', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                  {error}
+                </div>
+              )}
+              
+              <ActionButton type="submit" disabled={loading}>
+                {loading ? 'Entrando...' : 'Acessar Conta'}
+              </ActionButton>
             </LoginForm>
+            
+            <div style={{ margin: '1rem 0', textAlign: 'center' }}>
+              <span style={{ color: '#666', fontSize: '0.9rem' }}>ou</span>
+            </div>
+            
+            <ActionButton 
+              type="button" 
+              onClick={handleGoogleLogin}
+              disabled={loading || !firebaseConfigured}
+              style={{
+                backgroundColor: '#4285f4',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              {loading ? 'Conectando...' : 'Continuar com Google'}
+            </ActionButton>
           </Column>
 
           <Column>
