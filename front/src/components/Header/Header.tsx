@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   HeaderContainer,
   Nav,
@@ -10,13 +10,35 @@ import {
   MobileMenuButton,
   MobileMenu
 } from './styles';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAuthenticated, userData, logout, firebaseConfigured } = useAuth();
 
   const handleNavLinkClick = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Erro no logout:', error);
+    }
+  };
+
+  const getRoleDisplayName = (role: string): string => {
+    const roleNames: Record<string, string> = {
+      'recruiter': 'Recrutador',
+      'annual_plan': 'Plano Anual',
+      'monthly_plan': 'Plano Mensal',
+      'basic_plan': 'Plano Básico',
+    };
+    return roleNames[role] || 'Usuário';
   };
 
   return (
@@ -38,12 +60,38 @@ export const Header: React.FC = () => {
           >
             Contato
           </NavLink>
-          <LoginButton
-            as={Link}
-            to="/login"
+          {isAuthenticated && userData ? (
+            <>
+              <NavLink
+                as={Link}
+                to="/home"
+                $isActive={location.pathname === '/home'}
+              >
+                Vagas
+              </NavLink>
+              <NavLink
+                as={Link}
+                to="/dashboard"
+                $isActive={location.pathname === '/dashboard'}
+              >
+                Dashboard
+              </NavLink>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <span style={{ fontSize: '0.9rem', color: '#666' }}>
+                  {userData.displayName || userData.email} ({getRoleDisplayName(userData.role)})
+                </span>
+                <LoginButton onClick={handleLogout}>Sair</LoginButton>
+              </div>
+            </>
+          ) : (
+            <LoginButton
+              as={Link}
+              to="/login"
+              title={!firebaseConfigured ? 'Configure o Firebase para fazer login' : 'Fazer login'}
             >
-              Login
+              Login {!firebaseConfigured && '⚠️'}
             </LoginButton>
+          )}
         </NavLinks>
         <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <svg 
@@ -72,17 +120,42 @@ export const Header: React.FC = () => {
           Planos
         </NavLink>
         <NavLink
-            as={Link}
-            to="/contato"
-          >
-            Contato
-          </NavLink>
+          as={Link}
+          to="/contato"
+          onClick={handleNavLinkClick}
+        >
+          Contato
+        </NavLink>
+        {isAuthenticated && userData ? (
+          <>
+            <NavLink
+              as={Link}
+              to="/home"
+              onClick={handleNavLinkClick}
+            >
+              Vagas
+            </NavLink>
+            <NavLink
+              as={Link}
+              to="/dashboard"
+              onClick={handleNavLinkClick}
+            >
+              Dashboard
+            </NavLink>
+            <div style={{ padding: '0.5rem', fontSize: '0.9rem', color: '#666' }}>
+              {userData.displayName || userData.email} ({getRoleDisplayName(userData.role)})
+            </div>
+            <LoginButton onClick={handleLogout}>Sair</LoginButton>
+          </>
+        ) : (
           <LoginButton
             as={Link}
             to="/login"
-            >
-              Login
-            </LoginButton>
+            title={!firebaseConfigured ? 'Configure o Firebase para fazer login' : 'Fazer login'}
+          >
+            Login {!firebaseConfigured && '⚠️'}
+          </LoginButton>
+        )}
       </MobileMenu>
     </HeaderContainer>
   );
