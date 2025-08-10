@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useParams, Navigate } from "react-router-dom";
 import { plans } from "../PaymentPlans/dataPlans";
 import {
@@ -26,15 +27,35 @@ import {
 import { FiBarChart, FiChevronDown, FiCreditCard, FiUser } from "react-icons/fi";
 import { FaPix, FaStripe } from "react-icons/fa6";
 import { Header } from "../../components/Header/Header";
+import { auth } from "../../lib/firebase";
 
 export const CheckoutScreen: React.FC = () => {
   const { planId } = useParams<{ planId: string }>();
   const [paymentMethod, setPaymentMethod] = useState('pix');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+  
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    await createUserWithEmailAndPassword(email, password);
+  }
 
   const plan = plans.find(p => p.id === planId);
 
   if (!plan) {
     return <Navigate to="/planos" replace />;
+  }
+
+  if (loading) {
+    return <div>Carregando...</div>;
   }
 
   const isBasicPlan = plan.id === 'basic';
@@ -71,7 +92,11 @@ export const CheckoutScreen: React.FC = () => {
                   </InputGroup>
                   <InputGroup>
                     <label htmlFor="email">Email</label>
-                    <Input id="email" type="email" />
+                    <Input id="email" type="email" onChange={(e) => setEmail(e.target.value)} />
+                  </InputGroup>
+                  <InputGroup>
+                    <label htmlFor="password">Senha</label>
+                    <Input id="password" type="password" onChange={(e) => setPassword(e.target.value)} />
                   </InputGroup>
                   <InputRow>
                     <InputGroup>
@@ -172,7 +197,7 @@ export const CheckoutScreen: React.FC = () => {
                   </InputGroup>
                 </FormSection>
                 
-                <SubmitButton>Finalizar Assinatura</SubmitButton>
+                <SubmitButton onClick={(e) => handleSignIn(e)}>Criar conta</SubmitButton>
               </form>
             </FormColumn>
 

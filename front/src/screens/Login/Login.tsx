@@ -19,16 +19,24 @@ import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { useAuthForm } from "../../hooks/useAuthForm";
 import { useAuth } from "../../contexts/AuthContext";
+import { auth } from "../../lib/firebase";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 export const LoginScreen: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   
-  const { loading, error, handleLogin, handleGoogleLogin } = useAuthForm();
+  const { loading, error, handleGoogleLogin } = useAuthForm();
   const { firebaseConfigured, isAuthenticated, loading: authLoading } = useAuth();
   const navigate = useNavigate();
 
+  const [
+    signInWithEmailAndPassword,
+    user,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  console.log(user);
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
       navigate('/home', { replace: true });
@@ -37,7 +45,7 @@ export const LoginScreen: FC = () => {
 
   const handleLoginSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    await handleLogin(email, password);
+    await signInWithEmailAndPassword(email, password);
   };
 
   if (authLoading) {
@@ -138,7 +146,7 @@ export const LoginScreen: FC = () => {
               onClick={handleGoogleLogin}
               disabled={loading || !firebaseConfigured}
               style={{
-                backgroundColor: '#4285f4',
+                backgroundColor: '#4A90E2',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -161,7 +169,7 @@ export const LoginScreen: FC = () => {
               Se você ainda não possui uma conta, escolha um plano do MinhaVaga e preencha o cadastro para ter acesso a vagas exclusivas e ferramentas para impulsionar sua carreira.
             </DescriptionText>
             <ActionButton as={Link} to="/planos">
-              Escolher Plano
+              Criar a sua conta
             </ActionButton>
           </Column>
         </ContentGrid>

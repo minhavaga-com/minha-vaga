@@ -67,11 +67,30 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         </FeatureList>
       </div>
       <div>
-        <SubscribeButton isPopular={plan.isPopular} onClick={handleSubscribe}>
-          Assinar {plan.name}
+        <SubscribeButton 
+          isPopular={plan.isPopular} 
+          onClick={handleSubscribe}
+          disabled={plan.id === 'monthly' || plan.id === 'annual'}
+          style={{
+            cursor: (plan.id === 'monthly' || plan.id === 'annual') ? 'not-allowed' : 'pointer',
+            opacity: (plan.id === 'monthly' || plan.id === 'annual') ? 0.6 : 1
+          }}
+        >
+          {plan.id === 'monthly' || plan.id === 'annual' ? 'Temporariamente Indisponível' : `Assinar ${plan.name}`}
         </SubscribeButton>
         {plan.id === 'annual' && (
           <SavingsText>Economize mais de 50%</SavingsText>
+        )}
+        {(plan.id === 'monthly' || plan.id === 'annual') && (
+          <div style={{ 
+            textAlign: 'center', 
+            marginTop: '10px', 
+            fontSize: '14px', 
+            color: '#6b7280', 
+            fontStyle: 'italic' 
+          }}>
+            Plano temporariamente indisponível
+          </div>
         )}
       </div>
     </Card>
