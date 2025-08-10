@@ -71,7 +71,7 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
           Assinar {plan.name}
         </SubscribeButton>
         {plan.id === 'annual' && (
-          <SavingsText>economize 67%</SavingsText>
+          <SavingsText>Economize mais de 50%</SavingsText>
         )}
       </div>
     </Card>

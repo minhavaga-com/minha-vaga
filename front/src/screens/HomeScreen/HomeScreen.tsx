@@ -21,7 +21,7 @@ import {
   Select
 } from './styles';
 import { useHomeScreen } from './useHomeScreen';
-import { Header } from '../../components/Header/Header';
+import { HeaderHome } from '../../components/HeaderHome/HeaderHome';
 
 export const HomeScreen: React.FC = () => {
   const {
@@ -44,7 +44,7 @@ export const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <HeaderHome />
       <PageWrapper>
         <Container>
           <Hero>

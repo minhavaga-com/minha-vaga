@@ -45,6 +45,12 @@ export const CheckoutScreen: React.FC = () => {
       const discountedPrice = yearlyPrice * 0.95;
       return discountedPrice.toFixed(2).replace('.', ',');
     }
+    if (plan.id === 'monthly') {
+      const monthlyPrice = parseFloat(plan.monthlyPrice.replace(',', '.'));
+      const discountedPrice = monthlyPrice * 0.95;
+      const roundedDown = Math.floor(discountedPrice * 100) / 100;
+      return roundedDown.toFixed(2).replace('.', ',');
+    }
     return plan.yearlyPrice;
   };
 
