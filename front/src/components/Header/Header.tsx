@@ -8,7 +8,10 @@ import {
   NavLink,
   LoginButton,
   MobileMenuButton,
-  MobileMenu
+  MobileMenu,
+  UserInfoContainer,
+  UserInfoText,
+  MobileUserInfo
 } from './styles';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -83,12 +86,12 @@ export const Header: React.FC = () => {
               >
                 Dashboard
               </NavLink>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <span style={{ fontSize: '0.9rem', color: '#666' }}>
+              <UserInfoContainer>
+                <UserInfoText>
                   {userData.displayName || userData.email} ({getRoleDisplayName(userData.role)})
-                </span>
+                </UserInfoText>
                 <LoginButton onClick={handleLogout}>Sair</LoginButton>
-              </div>
+              </UserInfoContainer>
             </>
           ) : (
             <LoginButton
@@ -156,9 +159,9 @@ export const Header: React.FC = () => {
             >
               Dashboard
             </NavLink>
-            <div style={{ padding: '0.5rem', fontSize: '0.9rem', color: '#666' }}>
+            <MobileUserInfo>
               {userData.displayName || userData.email} ({getRoleDisplayName(userData.role)})
-            </div>
+            </MobileUserInfo>
             <LoginButton onClick={handleLogout}>Sair</LoginButton>
           </>
         ) : (

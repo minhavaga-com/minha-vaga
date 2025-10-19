@@ -10,7 +10,9 @@ import {
   NavLink,
   LoginButton,
   MobileMenuButton,
-  MobileMenu
+  MobileMenu,
+  UserInfo,
+  MobileMenuItem
 } from './styles';
 
 export const HeaderHome: React.FC = () => {
@@ -71,45 +73,25 @@ export const HeaderHome: React.FC = () => {
         <Logo>MinhaVaga.com</Logo>
         
         <NavLinks>
-        <NavLink 
-            as={Link}
-            to="/home"
-            style={{ cursor: 'pointer' }}
-          >
+          <NavLink as={Link} to="/home">
             <FiBriefcase /> Vagas
           </NavLink>
 
-          <NavLink 
-            onClick={() => handleMenuClick('empresas')}
-            style={{ cursor: 'pointer' }}
-          >
+          <NavLink onClick={() => handleMenuClick('empresas')}>
             <FiUsers /> Empresas Parceiras
           </NavLink>
 
-          <NavLink 
-            as={Link}
-            to="/linkedin-search"
-            style={{ cursor: 'pointer' }}
-          >
+          <NavLink as={Link} to="/linkedin-search">
             <FiSearch /> Filtrar Vagas no LinkedIn
           </NavLink>
           
-          <NavLink 
-            onClick={() => handleMenuClick('profile')}
-            style={{ cursor: 'pointer' }}
-          >
+          <NavLink onClick={() => handleMenuClick('profile')}>
             <FiUser /> Perfil
           </NavLink>
 
-          <LoginButton 
-          onClick={() => handleMenuClick('logout')}
-          style={{ 
-            margin: '0.5rem',
-            textAlign: 'center'
-          }}
-        >
-          <FiLogOut /> Sair
-        </LoginButton>
+          <LoginButton onClick={() => handleMenuClick('logout')}>
+            <FiLogOut /> Sair
+          </LoginButton>
         </NavLinks>
 
         <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -132,82 +114,27 @@ export const HeaderHome: React.FC = () => {
       </Nav>
 
       <MobileMenu isOpen={isMobileMenuOpen}>
-        <div style={{ 
-          padding: '0.5rem', 
-          borderBottom: '1px solid #E5E7EB',
-          fontSize: '0.9rem',
-          color: '#666'
-        }}>
+        <UserInfo>
           <strong>{userData?.displayName || userData?.email}</strong>
-        </div>
+        </UserInfo>
         
-        <NavLink
-          as={Link}
-          to="/home"
-          onClick={() => setIsMobileMenuOpen(false)}
-          style={{
-            width: '100%',
-            textAlign: 'left',
-            padding: '0.75rem',
-            fontSize: '0.9rem',
-            display: 'block'
-          }}
-        >
+        <NavLink as={Link} to="/home" onClick={() => setIsMobileMenuOpen(false)}>
           <FiBriefcase /> Vagas
         </NavLink>
 
-        <button
-          onClick={() => handleMenuClick('empresas')}
-          style={{
-            width: '100%',
-            textAlign: 'left',
-            padding: '0.75rem',
-            border: 'none',
-            backgroundColor: 'transparent',
-            cursor: 'pointer',
-            fontSize: '0.9rem'
-          }}
-        >
+        <MobileMenuItem onClick={() => handleMenuClick('empresas')}>
           <FiUsers /> Empresas Parceiras
-        </button>
+        </MobileMenuItem>
 
-        <NavLink
-          as={Link}
-          to="/linkedin-search"
-          onClick={() => setIsMobileMenuOpen(false)}
-          style={{
-            width: '100%',
-            textAlign: 'left',
-            padding: '0.75rem',
-            fontSize: '0.9rem',
-            display: 'block'
-          }}
-        >
+        <NavLink as={Link} to="/linkedin-search" onClick={() => setIsMobileMenuOpen(false)}>
           <FiSearch /> Filtrar Vagas no LinkedIn
         </NavLink>
         
-        <button
-          onClick={() => handleMenuClick('profile')}
-          style={{
-            width: '100%',
-            textAlign: 'left',
-            padding: '0.75rem',
-            border: 'none',
-            backgroundColor: 'transparent',
-            cursor: 'pointer',
-            fontSize: '0.9rem'
-          }}
-        >
+        <MobileMenuItem onClick={() => handleMenuClick('profile')}>
           <FiUser /> Perfil
-        </button>
+        </MobileMenuItem>
         
-        <LoginButton 
-          onClick={() => handleMenuClick('logout')}
-          style={{ 
-            margin: '0.5rem 0',
-            textAlign: 'left'
-          }}
-        >
+        <LoginButton onClick={() => handleMenuClick('logout')}>
           <FiLogOut /> Sair
         </LoginButton>
       </MobileMenu>

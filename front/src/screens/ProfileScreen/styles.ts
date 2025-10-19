@@ -311,3 +311,44 @@ export const HelpText = styled.span`
   color: ${colors.textMedium};
   font-style: italic;
 `;
+
+export const CenteredMessage = styled.div`
+  text-align: center;
+  padding: 4rem;
+`;
+
+export const CloseButton = styled.button`
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: ${colors.textMedium};
+
+  &:hover {
+    color: ${colors.textDark};
+  }
+`;
+
+export const SmallFileText = styled(FileUploadText)`
+  font-size: 0.75rem;
+`;
+
+export const NewBadge = styled.span`
+  color: #10b981;
+  margin-left: 0.5rem;
+`;
+
+export const ResumeActions = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const ResumeLink = styled.a`
+  color: #6366f1;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;

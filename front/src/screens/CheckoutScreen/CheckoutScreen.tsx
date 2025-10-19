@@ -22,7 +22,10 @@ import {
   SubmitButton,
   SummaryCard,
   SummaryColumn,
-  TermsLink
+  TermsLink,
+  PixDetails,
+  FreeNotice,
+  TermsLabel
 } from "./styles";
 import { FiBarChart, FiChevronDown, FiCreditCard, FiUser } from "react-icons/fi";
 import { FaPix, FaStripe } from "react-icons/fa6";
@@ -129,7 +132,7 @@ export const CheckoutScreen: React.FC = () => {
                         readOnly
                       />
                       <span>Pix (5% Desconto)</span>
-                      <span className="details" style={{color: '#50C878', fontWeight: 'bold'}}>R$ {getPixPrice()}</span>
+                      <PixDetails className="details">R$ {getPixPrice()}</PixDetails>
                       <span className="icon"><FaPix /></span>
                     </RadioWrapper>
                     <RadioWrapper 
@@ -182,18 +185,18 @@ export const CheckoutScreen: React.FC = () => {
                     </RadioWrapper>
                   </PaymentOptions>
                   {isBasicPlan && (
-                    <p style={{ color: '#6b7280', fontStyle: 'italic', marginTop: '1rem', textAlign: 'center' }}>
+                    <FreeNotice>
                       O plano básico é gratuito - não requer pagamento
-                    </p>
+                    </FreeNotice>
                   )}
                 </FormSection>
                 
                 <FormSection>
                   <InputGroup>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: '#4F4F4F' }}>
+                    <TermsLabel>
                       <input type="checkbox" required />
                       Li e concordo com os <TermsLink>termos</TermsLink> e <TermsLink>política</TermsLink> da MinhaVaga.com.
-                    </label>
+                    </TermsLabel>
                   </InputGroup>
                 </FormSection>
                 

@@ -327,3 +327,23 @@ export const TermsLink = styled.span`
     color: ${colors.primaryDark};
   }
 `;
+
+export const PixDetails = styled.span`
+  color: #50C878;
+  font-weight: bold;
+`;
+
+export const FreeNotice = styled.p`
+  color: #6b7280;
+  font-style: italic;
+  margin-top: 1rem;
+  text-align: center;
+`;
+
+export const TermsLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #4F4F4F;
+`;

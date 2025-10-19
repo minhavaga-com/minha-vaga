@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth, UserRole } from '../../contexts/AuthContext';
+import { LoadingContainer, AccessDeniedContainer } from './styles';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -18,15 +19,9 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 
   if (loading) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh',
-        fontSize: '1.2rem' 
-      }}>
+      <LoadingContainer>
         Carregando...
-      </div>
+      </LoadingContainer>
     );
   }
 
@@ -39,16 +34,12 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     
     if (!hasPermission) {
       return (
-        <div style={{ 
-          padding: '2rem', 
-          textAlign: 'center',
-          fontSize: '1.1rem' 
-        }}>
+        <AccessDeniedContainer>
           <h2>Acesso Negado</h2>
           <p>Você não tem permissão para acessar esta página.</p>
           <p>Seu plano atual: <strong>{getRoleDisplayName(userData.role)}</strong></p>
           <p>Plano necessário: <strong>{getRoleDisplayName(requiredRole)}</strong></p>
-        </div>
+        </AccessDeniedContainer>
       );
     }
   }

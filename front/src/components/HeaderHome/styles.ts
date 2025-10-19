@@ -125,3 +125,27 @@ export const MobileMenu = styled.div<{ isOpen: boolean }>`
     margin: 0.5rem;
   }
 `;
+
+export const UserInfo = styled.div`
+  padding: 0.5rem;
+  border-bottom: 1px solid #E5E7EB;
+  font-size: 0.9rem;
+  color: #666;
+`;
+
+export const MobileMenuItem = styled.button`
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+`;

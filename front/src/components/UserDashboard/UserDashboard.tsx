@@ -1,5 +1,17 @@
 import React from 'react';
 import { useAuth, UserRole } from '../../contexts/AuthContext';
+import {
+  Container,
+  Header,
+  LogoutButton,
+  Section,
+  InfoGrid,
+  RoleBadge,
+  FeatureList,
+  FeatureItem,
+  PermissionGrid,
+  PermissionBox
+} from './styles';
 
 export const UserDashboard: React.FC = () => {
   const { userData, hasPermission, logout } = useAuth();
@@ -50,123 +62,64 @@ export const UserDashboard: React.FC = () => {
   };
 
   return (
-    <div style={{ 
-      padding: '2rem',
-      maxWidth: '800px',
-      margin: '0 auto'
-    }}>
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        marginBottom: '2rem'
-      }}>
+    <Container>
+      <Header>
         <h1>Dashboard do Usuário</h1>
-        <button 
-          onClick={logout}
-          style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: '#EF4444',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
+        <LogoutButton onClick={logout}>
           Sair
-        </button>
-      </div>
+        </LogoutButton>
+      </Header>
 
-      <div style={{ 
-        backgroundColor: '#F9FAFB',
-        padding: '1.5rem',
-        borderRadius: '8px',
-        marginBottom: '2rem'
-      }}>
+      <Section>
         <h2>Informações da Conta</h2>
-        <div style={{ display: 'grid', gap: '0.5rem' }}>
+        <InfoGrid>
           <p><strong>Nome:</strong> {userData.displayName || 'Não informado'}</p>
           <p><strong>Email:</strong> {userData.email}</p>
           <p>
             <strong>Plano:</strong> 
-            <span style={{ 
-              marginLeft: '0.5rem',
-              padding: '0.25rem 0.5rem',
-              backgroundColor: getRoleColor(userData.role),
-              color: 'white',
-              borderRadius: '4px',
-              fontSize: '0.8rem'
-            }}>
+            <RoleBadge $color={getRoleColor(userData.role)}>
               {userData.role.replace('_', ' ').toUpperCase()}
-            </span>
+            </RoleBadge>
           </p>
           {userData.planExpirationDate && (
             <p>
               <strong>Expira em:</strong> {userData.planExpirationDate.toLocaleDateString('pt-BR')}
             </p>
           )}
-        </div>
-      </div>
+        </InfoGrid>
+      </Section>
 
-      <div style={{ 
-        backgroundColor: '#F9FAFB',
-        padding: '1.5rem',
-        borderRadius: '8px',
-        marginBottom: '2rem'
-      }}>
+      <Section>
         <h2>Suas Funcionalidades</h2>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
+        <FeatureList>
           {getRoleFeatures(userData.role).map((feature, index) => (
-            <li key={index} style={{ 
-              padding: '0.5rem 0',
-              borderBottom: '1px solid #E5E7EB'
-            }}>
+            <FeatureItem key={index}>
               ✅ {feature}
-            </li>
+            </FeatureItem>
           ))}
-        </ul>
-      </div>
+        </FeatureList>
+      </Section>
 
-      <div style={{ 
-        backgroundColor: '#F9FAFB',
-        padding: '1.5rem',
-        borderRadius: '8px'
-      }}>
+      <Section>
         <h2>Verificação de Permissões</h2>
-        <div style={{ display: 'grid', gap: '1rem' }}>
-          <div style={{ 
-            padding: '1rem',
-            backgroundColor: hasPermission(UserRole.BASIC_PLAN) ? '#D1FAE5' : '#FEE2E2',
-            borderRadius: '4px'
-          }}>
+        <PermissionGrid>
+          <PermissionBox $hasPermission={hasPermission(UserRole.BASIC_PLAN)}>
             <strong>Acesso Básico:</strong> {hasPermission(UserRole.BASIC_PLAN) ? '✅ Permitido' : '❌ Negado'}
-          </div>
+          </PermissionBox>
 
-          <div style={{ 
-            padding: '1rem',
-            backgroundColor: hasPermission(UserRole.MONTHLY_PLAN) ? '#D1FAE5' : '#FEE2E2',
-            borderRadius: '4px'
-          }}>
+          <PermissionBox $hasPermission={hasPermission(UserRole.MONTHLY_PLAN)}>
             <strong>Funcionalidades Premium:</strong> {hasPermission(UserRole.MONTHLY_PLAN) ? '✅ Permitido' : '❌ Negado'}
-          </div>
+          </PermissionBox>
 
-          <div style={{ 
-            padding: '1rem',
-            backgroundColor: hasPermission(UserRole.ANNUAL_PLAN) ? '#D1FAE5' : '#FEE2E2',
-            borderRadius: '4px'
-          }}>
+          <PermissionBox $hasPermission={hasPermission(UserRole.ANNUAL_PLAN)}>
             <strong>Acesso Anual:</strong> {hasPermission(UserRole.ANNUAL_PLAN) ? '✅ Permitido' : '❌ Negado'}
-          </div>
+          </PermissionBox>
 
-          <div style={{ 
-            padding: '1rem',
-            backgroundColor: hasPermission(UserRole.RECRUITER) ? '#D1FAE5' : '#FEE2E2',
-            borderRadius: '4px'
-          }}>
+          <PermissionBox $hasPermission={hasPermission(UserRole.RECRUITER)}>
             <strong>Ferramentas de Recrutamento:</strong> {hasPermission(UserRole.RECRUITER) ? '✅ Permitido' : '❌ Negado'}
-          </div>
-        </div>
-      </div>
-    </div>
+          </PermissionBox>
+        </PermissionGrid>
+      </Section>
+    </Container>
   );
 }; 

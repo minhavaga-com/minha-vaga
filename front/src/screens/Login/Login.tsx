@@ -13,7 +13,13 @@ import {
   MainTitle,
   OptionsRow,
   PageWrapper,
-  Subheading
+  Subheading,
+  LoadingContainer,
+  WarningBox,
+  ErrorMessage,
+  Divider,
+  DividerText,
+  GoogleButton
 } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
@@ -33,7 +39,6 @@ export const LoginScreen: FC = () => {
 
   const [
     signInWithEmailAndPassword,
-    user,
   ] = useSignInWithEmailAndPassword(auth);
 
   useEffect(() => {
@@ -52,15 +57,9 @@ export const LoginScreen: FC = () => {
       <>
         <Header />
         <PageWrapper>
-          <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            height: '50vh',
-            fontSize: '1.2rem' 
-          }}>
+          <LoadingContainer>
             Verificando autenticação...
-          </div>
+          </LoadingContainer>
         </PageWrapper>
       </>
     );
@@ -76,18 +75,10 @@ export const LoginScreen: FC = () => {
           <Column>
             <Subheading>Entrar</Subheading>
             {!firebaseConfigured && (
-              <div style={{ 
-                padding: '1rem', 
-                marginBottom: '1rem',
-                backgroundColor: '#fff3cd', 
-                color: '#856404',
-                border: '1px solid #ffeaa7',
-                borderRadius: '4px',
-                fontSize: '0.9rem'
-              }}>
+              <WarningBox>
                 ⚠️ <strong>Firebase não configurado:</strong> Para usar o login, configure as variáveis de ambiente do Firebase. 
                 Consulte o arquivo <code>FIREBASE_AUTH_SETUP.md</code> para instruções.
-              </div>
+              </WarningBox>
             )}
             <LoginForm onSubmit={handleLoginSubmit}>
               <InputGroup>
@@ -126,9 +117,9 @@ export const LoginScreen: FC = () => {
               </OptionsRow>
               
               {error && (
-                <div style={{ color: 'red', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                <ErrorMessage>
                   {error}
-                </div>
+                </ErrorMessage>
               )}
               
               <ActionButton type="submit" disabled={loading}>
@@ -136,21 +127,14 @@ export const LoginScreen: FC = () => {
               </ActionButton>
             </LoginForm>
             
-            <div style={{ margin: '1rem 0', textAlign: 'center' }}>
-              <span style={{ color: '#666', fontSize: '0.9rem' }}>ou</span>
-            </div>
+            <Divider>
+              <DividerText>ou</DividerText>
+            </Divider>
             
-            <ActionButton 
+            <GoogleButton 
               type="button" 
               onClick={handleGoogleLogin}
               disabled={loading || !firebaseConfigured}
-              style={{
-                backgroundColor: '#4A90E2',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -159,7 +143,7 @@ export const LoginScreen: FC = () => {
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
               {loading ? 'Conectando...' : 'Continuar com Google'}
-            </ActionButton>
+            </GoogleButton>
           </Column>
 
           <Column>

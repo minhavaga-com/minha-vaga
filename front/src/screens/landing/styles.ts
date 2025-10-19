@@ -313,6 +313,17 @@ export const TestimonialCard = styled(Card)`
   @media (min-width: 1024px) {
     flex-basis: 30%;
   }
+
+  .text {
+    font-family: 'Readex Pro', sans-serif;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #4b5563;
+  }
+
+  .name {
+    font-weight: 600;
+  }
 `;
 
 export const CarouselButton = styled.button`
@@ -401,11 +412,4 @@ export const JoinUsCtaButton = styled.a`
 `;
 export const JoinUsSocials = styled.p`
   margin-top: 2rem;
-`;
-
-export const FooterContainer = styled.footer`
-  padding: 2rem;
-  text-align: center;
-  background-color: ${colors.footer};
-  color: ${colors.footerText};
 `;

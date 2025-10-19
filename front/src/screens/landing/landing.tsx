@@ -135,7 +135,7 @@ export const LandingPageScreen: React.FC = () => {
           <Container>
             <SectionTitle>Como Funciona?</SectionTitle>
             <SectionSubtitle>Simples, eficiente e focado em você.</SectionSubtitle>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
               {stepsData.map(step => <StepItem key={step.id} step={step} isOpen={openStepId === step.id} onClick={() => handleStepClick(step.id)} />)}
             </div>
           </Container>
@@ -184,8 +184,8 @@ export const LandingPageScreen: React.FC = () => {
                 <Carousel ref={carouselRef}>
                 {testimonials.map((t, i) => (
                     <TestimonialCard key={i}>
-                    <p style={{ fontFamily: 'Readex Pro', fontStyle: 'italic', marginBottom: '1rem', color: '#4b5563' }}>{t.text}</p>
-                    <p style={{ fontWeight: 600 }}>{t.name}</p>
+                    <p className="text">{t.text}</p>
+                    <p className="name">{t.name}</p>
                     </TestimonialCard>
                 ))}
                 </Carousel>
@@ -220,8 +220,8 @@ export const LandingPageScreen: React.FC = () => {
         </JoinUsCtaSection>
 
         <FooterContainer>
-          <p style={{fontFamily: 'Readex Pro'}}>&copy; {new Date().getFullYear()} MinhaVaga.com Todos os direitos reservados.</p>
-          <p style={{fontFamily: 'Readex Pro'}}>Feito com 💙 para ajudar juniores a decolar!</p>
+          <p>&copy; {new Date().getFullYear()} MinhaVaga.com Todos os direitos reservados.</p>
+          <p>Feito com 💙 para ajudar juniores a decolar!</p>
         </FooterContainer>
     </>
   );

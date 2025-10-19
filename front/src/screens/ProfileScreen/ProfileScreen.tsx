@@ -30,6 +30,12 @@ import {
   SocialLinks,
   SocialLink,
   HelpText,
+  CenteredMessage,
+  CloseButton,
+  SmallFileText,
+  NewBadge,
+  ResumeActions,
+  ResumeLink
 } from './styles';
 
 export const ProfileScreen: React.FC = () => {
@@ -63,9 +69,9 @@ export const ProfileScreen: React.FC = () => {
       <>
         <HeaderHome />
         <PageWrapper>
-          <div style={{ textAlign: 'center', padding: '4rem' }}>
+          <CenteredMessage>
             Carregando perfil...
-          </div>
+          </CenteredMessage>
         </PageWrapper>
       </>
     );
@@ -76,9 +82,9 @@ export const ProfileScreen: React.FC = () => {
       <>
         <HeaderHome />
         <PageWrapper>
-          <div style={{ textAlign: 'center', padding: '4rem' }}>
+          <CenteredMessage>
             Você precisa estar logado para acessar esta página.
-          </div>
+          </CenteredMessage>
         </PageWrapper>
       </>
     );
@@ -158,12 +164,9 @@ export const ProfileScreen: React.FC = () => {
               <Alert type={message.type}>
                 {message.type === 'success' ? <FiCheckCircle /> : <FiAlertCircle />}
                 {message.text}
-                <button 
-                  onClick={dismissMessage}
-                  style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer' }}
-                >
+                <CloseButton onClick={dismissMessage}>
                   <FiX />
-                </button>
+                </CloseButton>
               </Alert>
             )}
 
@@ -191,7 +194,7 @@ export const ProfileScreen: React.FC = () => {
                   type="email"
                   value={currentUser.email || ''}
                   disabled
-                  style={{ backgroundColor: '#f3f4f6', cursor: 'not-allowed' }}
+                  readOnly
                 />
                 <HelpText>O email não pode ser alterado</HelpText>
               </FormGroup>
@@ -253,27 +256,26 @@ export const ProfileScreen: React.FC = () => {
                     <FileUploadText>
                       <strong>Clique para fazer upload</strong> ou arraste seu currículo aqui
                     </FileUploadText>
-                    <FileUploadText style={{ fontSize: '0.75rem' }}>
+                    <SmallFileText>
                       PDF, DOC ou DOCX (máx. 5MB)
-                    </FileUploadText>
+                    </SmallFileText>
                   </FileUploadArea>
                 ) : (
                   <CurrentFile>
                     <FileName>
                       <FiFileText />
                       {resumeFile ? resumeFile.name : profile?.resumeName}
-                      {resumeFile && <span style={{ color: '#10b981', marginLeft: '0.5rem' }}>• Novo</span>}
+                      {resumeFile && <NewBadge>• Novo</NewBadge>}
                     </FileName>
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <ResumeActions>
                       {profile?.resumeURL && !resumeFile && (
-                        <a 
+                        <ResumeLink
                           href={profile.resumeURL} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          style={{ color: '#6366f1', textDecoration: 'none' }}
                         >
                           <FiExternalLink />
-                        </a>
+                        </ResumeLink>
                       )}
                       <RemoveButton
                         type="button"
@@ -287,7 +289,7 @@ export const ProfileScreen: React.FC = () => {
                       >
                         <FiX />
                       </RemoveButton>
-                    </div>
+                    </ResumeActions>
                   </CurrentFile>
                 )}
                 

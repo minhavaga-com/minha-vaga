@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../GlobalStyles';
 
-export const { colors } = theme;
+const { colors } = theme;
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -148,4 +148,46 @@ export const DescriptionText = styled.p`
   color: ${colors.textMedium};
   line-height: 1.6;
   margin-bottom: 1.5rem;
+`;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.2rem;
+`;
+
+export const WarningBox = styled.div`
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  font-size: 0.9rem;
+`;
+
+export const ErrorMessage = styled.div`
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+`;
+
+export const Divider = styled.div`
+  margin: 1rem 0;
+  text-align: center;
+`;
+
+export const DividerText = styled.span`
+  color: #666;
+  font-size: 0.9rem;
+`;
+
+export const GoogleButton = styled(ActionButton)`
+  background-color: #4A90E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 `;

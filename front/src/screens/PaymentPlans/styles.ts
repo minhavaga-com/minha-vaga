@@ -147,6 +147,11 @@ export const SubscribeButton = styled.button<{ isPopular?: boolean }>`
   &:hover {
     background-color: ${({ isPopular }) => (isPopular ? '#357ABD' : '#D1D1C6')};
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 `;
 
 export const SavingsText = styled.p`
@@ -193,4 +198,12 @@ export const FooterContainer = styled.footer`
   text-align: center;
   background-color: #1F2937;
   color: #9CA3AF;
+`;
+
+export const DisabledNotice = styled.div`
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
 `;

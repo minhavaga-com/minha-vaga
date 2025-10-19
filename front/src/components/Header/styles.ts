@@ -106,3 +106,20 @@ export const MobileMenu = styled.div<{ isOpen: boolean }>`
     text-align: center;
   }
 `;
+
+export const UserInfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const UserInfoText = styled.span`
+  font-size: 0.9rem;
+  color: #666;
+`;
+
+export const MobileUserInfo = styled.div`
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+`;

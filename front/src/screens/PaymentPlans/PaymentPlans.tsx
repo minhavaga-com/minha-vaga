@@ -27,7 +27,8 @@ import {
   ContactTitle,
   ContactSubtitle,
   ContactButton,
-  FooterContainer
+  FooterContainer,
+  DisabledNotice
 } from './styles';
 import { Link } from 'react-router-dom';
 
@@ -71,10 +72,6 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
           isPopular={plan.isPopular} 
           onClick={handleSubscribe}
           disabled={plan.id === 'monthly' || plan.id === 'annual'}
-          style={{
-            cursor: (plan.id === 'monthly' || plan.id === 'annual') ? 'not-allowed' : 'pointer',
-            opacity: (plan.id === 'monthly' || plan.id === 'annual') ? 0.6 : 1
-          }}
         >
           {plan.id === 'monthly' || plan.id === 'annual' ? 'Temporariamente Indisponível' : `Assinar ${plan.name}`}
         </SubscribeButton>
@@ -82,15 +79,9 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
           <SavingsText>Economize mais de 15%</SavingsText>
         )}
         {(plan.id === 'monthly' || plan.id === 'annual') && (
-          <div style={{ 
-            textAlign: 'center', 
-            marginTop: '10px', 
-            fontSize: '14px', 
-            color: '#6b7280', 
-            fontStyle: 'italic' 
-          }}>
+          <DisabledNotice>
             Plano temporariamente indisponível
-          </div>
+          </DisabledNotice>
         )}
       </div>
     </Card>
