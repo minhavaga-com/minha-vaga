@@ -79,7 +79,7 @@ const PricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
           {plan.id === 'monthly' || plan.id === 'annual' ? 'Temporariamente Indisponível' : `Assinar ${plan.name}`}
         </SubscribeButton>
         {plan.id === 'annual' && (
-          <SavingsText>Economize mais de 50%</SavingsText>
+          <SavingsText>Economize mais de 15%</SavingsText>
         )}
         {(plan.id === 'monthly' || plan.id === 'annual') && (
           <div style={{ 
