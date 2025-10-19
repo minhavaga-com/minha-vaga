@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Nav>
-        <Logo as={Link} to="/">MinhaVaga.com</Logo>
+        <Logo>MinhaVaga.com</Logo>
         <NavLinks>
           <NavLink 
             as={Link} 
@@ -62,6 +62,13 @@ export const Header: React.FC = () => {
           </NavLink>
           {isAuthenticated && userData ? (
             <>
+              <NavLink
+                as={Link}
+                to="/linkedin-search"
+                $isActive={location.pathname === '/linkedin-search'}
+              >
+                Filtrar Vagas no LinkedIn
+              </NavLink>
               <NavLink
                 as={Link}
                 to="/home"
@@ -128,6 +135,13 @@ export const Header: React.FC = () => {
         </NavLink>
         {isAuthenticated && userData ? (
           <>
+            <NavLink
+              as={Link}
+              to="/linkedin-search"
+              onClick={handleNavLinkClick}
+            >
+              Filtrar Vagas no LinkedIn
+            </NavLink>
             <NavLink
               as={Link}
               to="/home"

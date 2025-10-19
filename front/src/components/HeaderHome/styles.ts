@@ -66,8 +66,7 @@ export const NavLink = styled.a<{ $isActive?: boolean }>`
 `;
 
 export const LoginButton = styled(NavLink)`
-  background-color: #4A90E2;
-  color: #FFFFFF;
+  color: #374151;
   padding: 0.5rem 1rem;
 
   &:hover {

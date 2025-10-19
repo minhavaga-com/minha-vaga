@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { FiBriefcase, FiSearch, FiUsers, FiUser, FiLogOut } from 'react-icons/fi';
 import {
   HeaderContainer,
   Nav,
@@ -35,8 +36,7 @@ export const HeaderHome: React.FC = () => {
     
     switch (action) {
       case 'empresas':
-        // TODO: Implementar navegação para empresas parceiras
-        console.log('Navegando para empresas parceiras');
+        navigate('/empresas');
         break;
       case 'profile':
         navigate('/dashboard');
@@ -68,32 +68,47 @@ export const HeaderHome: React.FC = () => {
   return (
     <HeaderContainer>
       <Nav>
-        <Logo as={Link} to="/">MinhaVaga.com</Logo>
+        <Logo>MinhaVaga.com</Logo>
         
         <NavLinks>
+        <NavLink 
+            as={Link}
+            to="/home"
+            style={{ cursor: 'pointer' }}
+          >
+            <FiBriefcase /> Vagas
+          </NavLink>
+
+          <NavLink 
+            as={Link}
+            to="/linkedin-search"
+            style={{ cursor: 'pointer' }}
+          >
+            <FiSearch /> Filtrar Vagas no LinkedIn
+          </NavLink>
+          
           <NavLink 
             onClick={() => handleMenuClick('empresas')}
             style={{ cursor: 'pointer' }}
           >
-            🏢 Empresas Parceiras
+            <FiUsers /> Empresas Parceiras
           </NavLink>
           
           <NavLink 
             onClick={() => handleMenuClick('profile')}
             style={{ cursor: 'pointer' }}
           >
-            👤 Profile
+            <FiUser /> Perfil
           </NavLink>
 
           <LoginButton 
           onClick={() => handleMenuClick('logout')}
           style={{ 
-            backgroundColor: '#EF4444',
             margin: '0.5rem',
             textAlign: 'center'
           }}
         >
-          🚪 Logout
+          <FiLogOut /> Sair
         </LoginButton>
         </NavLinks>
 
@@ -128,6 +143,21 @@ export const HeaderHome: React.FC = () => {
           <strong>{userData?.displayName || userData?.email}</strong>
         </div>
         
+        <NavLink
+          as={Link}
+          to="/linkedin-search"
+          onClick={() => setIsMobileMenuOpen(false)}
+          style={{
+            width: '100%',
+            textAlign: 'left',
+            padding: '0.75rem',
+            fontSize: '0.9rem',
+            display: 'block'
+          }}
+        >
+          <FiSearch /> Filtrar Vagas no LinkedIn
+        </NavLink>
+        
         <button
           onClick={() => handleMenuClick('empresas')}
           style={{
@@ -140,7 +170,7 @@ export const HeaderHome: React.FC = () => {
             fontSize: '0.9rem'
           }}
         >
-          🏢 Empresas Parceiras
+          <FiUsers /> Empresas Parceiras
         </button>
         
         <button
@@ -155,18 +185,17 @@ export const HeaderHome: React.FC = () => {
             fontSize: '0.9rem'
           }}
         >
-          👤 Profile
+          <FiUser /> Perfil
         </button>
         
         <LoginButton 
           onClick={() => handleMenuClick('logout')}
           style={{ 
-            backgroundColor: '#EF4444',
             margin: '0.5rem',
             textAlign: 'center'
           }}
         >
-          🚪 Logout
+          <FiLogOut /> Sair
         </LoginButton>
       </MobileMenu>
     </HeaderContainer>
