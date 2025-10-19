@@ -10,6 +10,8 @@ import { ProtectedRoute } from '../components/ProtectedRoute/ProtectedRoute';
 import { UserRole } from '../contexts/AuthContext';
 import { AdminPanel } from '../components/AdminPanel/AdminPanel';
 import { UserDashboard } from '../components/UserDashboard/UserDashboard';
+import { LinkedInSearchScreen } from '../screens/LinkedInSearch/LinkedInSearch';
+import { CompaniesScreen } from '../screens/CompaniesScreen/CompaniesScreen';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -42,6 +44,14 @@ export const AppRoutes: React.FC = () => {
             <AdminPanel />
           </ProtectedRoute>
         } 
+      />
+      <Route 
+        path="/linkedin-search" 
+        element={<LinkedInSearchScreen />} 
+      />
+      <Route 
+        path="/empresas" 
+        element={<CompaniesScreen />} 
       />
     </Routes>
   );
