@@ -39,7 +39,7 @@ export const HeaderHome: React.FC = () => {
         navigate('/empresas');
         break;
       case 'profile':
-        navigate('/dashboard');
+        navigate('/profile');
         break;
       case 'logout':
         handleLogout();
@@ -80,18 +80,18 @@ export const HeaderHome: React.FC = () => {
           </NavLink>
 
           <NavLink 
+            onClick={() => handleMenuClick('empresas')}
+            style={{ cursor: 'pointer' }}
+          >
+            <FiUsers /> Empresas Parceiras
+          </NavLink>
+
+          <NavLink 
             as={Link}
             to="/linkedin-search"
             style={{ cursor: 'pointer' }}
           >
             <FiSearch /> Filtrar Vagas no LinkedIn
-          </NavLink>
-          
-          <NavLink 
-            onClick={() => handleMenuClick('empresas')}
-            style={{ cursor: 'pointer' }}
-          >
-            <FiUsers /> Empresas Parceiras
           </NavLink>
           
           <NavLink 
@@ -145,7 +145,7 @@ export const HeaderHome: React.FC = () => {
         
         <NavLink
           as={Link}
-          to="/linkedin-search"
+          to="/home"
           onClick={() => setIsMobileMenuOpen(false)}
           style={{
             width: '100%',
@@ -155,9 +155,9 @@ export const HeaderHome: React.FC = () => {
             display: 'block'
           }}
         >
-          <FiSearch /> Filtrar Vagas no LinkedIn
+          <FiBriefcase /> Vagas
         </NavLink>
-        
+
         <button
           onClick={() => handleMenuClick('empresas')}
           style={{
@@ -172,6 +172,21 @@ export const HeaderHome: React.FC = () => {
         >
           <FiUsers /> Empresas Parceiras
         </button>
+
+        <NavLink
+          as={Link}
+          to="/linkedin-search"
+          onClick={() => setIsMobileMenuOpen(false)}
+          style={{
+            width: '100%',
+            textAlign: 'left',
+            padding: '0.75rem',
+            fontSize: '0.9rem',
+            display: 'block'
+          }}
+        >
+          <FiSearch /> Filtrar Vagas no LinkedIn
+        </NavLink>
         
         <button
           onClick={() => handleMenuClick('profile')}
@@ -191,8 +206,8 @@ export const HeaderHome: React.FC = () => {
         <LoginButton 
           onClick={() => handleMenuClick('logout')}
           style={{ 
-            margin: '0.5rem',
-            textAlign: 'center'
+            margin: '0.5rem 0',
+            textAlign: 'left'
           }}
         >
           <FiLogOut /> Sair

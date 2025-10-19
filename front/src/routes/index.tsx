@@ -12,6 +12,7 @@ import { AdminPanel } from '../components/AdminPanel/AdminPanel';
 import { UserDashboard } from '../components/UserDashboard/UserDashboard';
 import { LinkedInSearchScreen } from '../screens/LinkedInSearch/LinkedInSearch';
 import { CompaniesScreen } from '../screens/CompaniesScreen/CompaniesScreen';
+import { ProfileScreen } from '../screens/ProfileScreen/ProfileScreen';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -52,6 +53,14 @@ export const AppRoutes: React.FC = () => {
       <Route 
         path="/empresas" 
         element={<CompaniesScreen />} 
+      />
+      <Route 
+        path="/profile" 
+        element={
+          <ProtectedRoute requireAuth={true}>
+            <ProfileScreen />
+          </ProtectedRoute>
+        } 
       />
     </Routes>
   );

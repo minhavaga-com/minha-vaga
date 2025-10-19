@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBulvgAhKb_h0HIW1O5J5t0VzwVKPHVIiQ",
@@ -16,6 +17,8 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const db = getFirestore(app);
+
+export const storage = getStorage(app);
 
 if (process.env.NODE_ENV === 'development') {
   // Uncomment these lines if you want to use emulators in development
