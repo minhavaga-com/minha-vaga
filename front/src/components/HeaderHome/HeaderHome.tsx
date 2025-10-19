@@ -112,7 +112,6 @@ export const HeaderHome: React.FC = () => {
         </LoginButton>
         </NavLinks>
 
-        {/* Mobile Menu Button */}
         <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <svg 
             width="24" 
@@ -132,7 +131,6 @@ export const HeaderHome: React.FC = () => {
         </MobileMenuButton>
       </Nav>
 
-      {/* Mobile Menu */}
       <MobileMenu isOpen={isMobileMenuOpen}>
         <div style={{ 
           padding: '0.5rem', 

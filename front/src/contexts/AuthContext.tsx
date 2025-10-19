@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { User } from 'firebase/auth';
 
-// Definindo os tipos de usuário/permissões
 export const UserRole = {
-  RECRUITER: 'recruiter',        // Recrutadores/Parceiros
-  BASIC_PLAN: 'basic_plan',      // Plano básico
-  MONTHLY_PLAN: 'monthly_plan',  // Plano mensal
-  ANNUAL_PLAN: 'annual_plan'     // Plano anual
+  RECRUITER: 'recruiter',
+  BASIC_PLAN: 'basic_plan',
+  MONTHLY_PLAN: 'monthly_plan',
+  ANNUAL_PLAN: 'annual_plan'
 } as const;
 
 export type UserRole = typeof UserRole[keyof typeof UserRole];

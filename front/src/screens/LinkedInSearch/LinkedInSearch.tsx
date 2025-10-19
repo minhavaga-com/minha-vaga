@@ -61,7 +61,6 @@ export const LinkedInSearchScreen: React.FC = () => {
         experienceLevel ? `&f_E=${experienceLevel}` : ''
       }&start=${skipValue}`;
     } else {
-      // Para publicações
       const keywords = data.exclude 
         ? `${data.tech} NOT (${data.exclude})`
         : data.tech;

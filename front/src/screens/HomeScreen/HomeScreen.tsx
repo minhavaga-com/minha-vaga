@@ -48,8 +48,8 @@ export const HomeScreen: React.FC = () => {
       <PageWrapper>
         <Container>
           <Hero>
-            <h1>Vagas incríveis selecionadas para você 🚀</h1>
-            <p>Explore oportunidades alinhadas com a sua jornada de aprendizado.</p>
+            <h1>Vagas incríveis selecionadas para você</h1>
+            <p>Explore oportunidades alinhadas com seu perfil profissional.</p>
           </Hero>
 
           <FilterContainer>
@@ -77,10 +77,6 @@ export const HomeScreen: React.FC = () => {
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
             </FilterGroup>
-            {/* <FilterGroup>
-              <label htmlFor="location">Localização <small>(opcional)</small></label>
-              <Select id="location"><option>Ex: Fortaleza</option></Select>
-            </FilterGroup> */}
             <SearchButton onClick={handleSearch} disabled={loading}><FiSearch /> Buscar</SearchButton>
           </FilterContainer>
 

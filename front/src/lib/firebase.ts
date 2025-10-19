@@ -20,10 +20,4 @@ export const db = getFirestore(app);
 
 export const storage = getStorage(app);
 
-if (process.env.NODE_ENV === 'development') {
-  // Uncomment these lines if you want to use emulators in development
-  // connectAuthEmulator(auth, "http://localhost:9099");
-  // connectFirestoreEmulator(db, 'localhost', 8080);
-}
-
 export default app; 

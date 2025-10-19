@@ -46,7 +46,6 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #FFFFFF;
   }
 
-  /* Aplicar font-family globalmente para todos os elementos */
   h1, h2, h3, h4, h5, h6, p, span, div, a, button {
     font-family: ${theme.fonts.main};
   }

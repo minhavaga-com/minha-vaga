@@ -36,7 +36,6 @@ export const LoginScreen: FC = () => {
     user,
   ] = useSignInWithEmailAndPassword(auth);
 
-  console.log(user);
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
       navigate('/home', { replace: true });

@@ -36,7 +36,7 @@ export const CompaniesScreen: React.FC = () => {
       <PageWrapper>
         <Container>
           <Hero>
-            <h1>Empresas Parceiras 🤝</h1>
+            <h1>Empresas Parceiras</h1>
             <p>Conheça as empresas que confiam em nosso trabalho e oferecem oportunidades incríveis.</p>
           </Hero>
 

@@ -54,7 +54,7 @@ export const AdminPanel: React.FC = () => {
         maxWidth: '500px',
         margin: '2rem auto'
       }}>
-        <h2>⚠️ Firebase não configurado</h2>
+        <h2>Firebase não configurado</h2>
         <p>Para usar o painel administrativo, configure as variáveis de ambiente do Firebase.</p>
         <p>Consulte o arquivo <code>FIREBASE_AUTH_SETUP.md</code> para instruções detalhadas.</p>
       </div>

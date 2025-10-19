@@ -13,8 +13,6 @@ export function useProfileScreen() {
   const [saving, setSaving] = useState(false);
   const [uploadingFile, setUploadingFile] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-  
-  // Form fields
   const [displayName, setDisplayName] = useState('');
   const [about, setAbout] = useState('');
   const [github, setGithub] = useState('');
@@ -40,7 +38,6 @@ export function useProfileScreen() {
           setGithub(data.github || '');
           setLinkedin(data.linkedin || '');
         } else {
-          // Initialize with user data
           setDisplayName(currentUser.displayName || '');
         }
       } catch (error) {
@@ -56,14 +53,12 @@ export function useProfileScreen() {
 
   const handleFileChange = (file: File | null) => {
     if (file) {
-      // Validate file type
       const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
       if (!validTypes.includes(file.type)) {
         setMessage({ type: 'error', text: 'Formato de arquivo inválido. Use PDF ou DOC/DOCX.' });
         return;
       }
       
-      // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setMessage({ type: 'error', text: 'Arquivo muito grande. Máximo 5MB.' });
         return;
@@ -113,11 +108,9 @@ export function useProfileScreen() {
         resumeName: profile?.resumeName,
       };
 
-      // Upload new resume if selected
       if (resumeFile) {
         setUploadingFile(true);
         
-        // Delete old resume if exists
         if (profile?.resumeURL) {
           await deleteOldResume(profile.resumeURL);
         }
@@ -127,7 +120,6 @@ export function useProfileScreen() {
         setUploadingFile(false);
       }
 
-      // Save profile data
       const profileData: UserProfile = {
         uid: currentUser.uid,
         displayName,

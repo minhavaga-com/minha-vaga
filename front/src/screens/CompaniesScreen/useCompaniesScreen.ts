@@ -15,7 +15,6 @@ export function useCompaniesScreen() {
       setError(null);
 
       try {
-        // Buscar mais vagas para ter mais empresas
         const response = await fetch(`https://apibr.com/vagas/api/v2/issues?page=1&per_page=100`);
         if (!response.ok) throw new Error('Falha ao buscar dados da API');
         
@@ -31,7 +30,6 @@ export function useCompaniesScreen() {
     fetchJobs();
   }, []);
 
-  // Agrupar vagas por empresa
   const companies = useMemo<Company[]>(() => {
     const companyMap = new Map<string, Company>();
 
@@ -52,11 +50,9 @@ export function useCompaniesScreen() {
       }
     });
 
-    // Converter para array e ordenar por número de vagas
     return Array.from(companyMap.values()).sort((a, b) => b.jobCount - a.jobCount);
   }, [jobs]);
 
-  // Paginação
   const totalPages = Math.ceil(companies.length / COMPANIES_PER_PAGE);
   const displayedCompanies = useMemo(() => {
     const startIndex = (currentPage - 1) * COMPANIES_PER_PAGE;
